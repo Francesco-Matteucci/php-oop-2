@@ -1,9 +1,16 @@
+<?php
+session_start();
+
+$isLoggedIn = isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn'];
+
+$discount = 0.20;
+?>
+
 <!DOCTYPE html>
 <html lang="it">
 
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>E-commerce per Animali - Home</title>
     <!-- Bootstrap CSS -->
@@ -17,6 +24,7 @@
 <body>
 
     <div id="app">
+
         <?php
         require_once __DIR__ . '/components/header.php';
         ?>
@@ -25,9 +33,9 @@
             <h1 class="text-center mb-5">I nostri prodotti</h1>
             <div class="row">
                 <?php
-            require_once __DIR__ . '/db/db.php';
+                require_once __DIR__ . '/db/db.php';
 
-            foreach ($products as $product) { ?>
+                foreach ($products as $product) { ?>
                 <div class="col-md-4 mb-4">
                     <div class="card h-100 mb-4 p-4">
                         <img src="<?= $product->image; ?>" class="card-img-top" alt="<?= $product->name; ?>">
@@ -35,13 +43,21 @@
                             <p class="card-text"><i class="<?= $product->category->icon; ?>"></i></p>
                             <h5 class="card-title"><?= $product->name; ?></h5>
                             <p class="card-text"><?= $product->getDetails(); ?></p>
-                            <p class="card-text"><strong>Prezzo: €<?= $product->price; ?></strong></p>
+                            <p class="card-text">
+                                <strong>Prezzo: €<?= number_format($product->price, 2); ?></strong>
+                                <?php if ($isLoggedIn) { ?>
+                                <br>
+                                <strong>Prezzo scontato:
+                                    €<?= number_format($product->price * (1 - $discount), 2); ?></strong>
+                                <?php } ?>
+                            </p>
                         </div>
                     </div>
                 </div>
                 <?php } ?>
             </div>
         </div>
+
         <?php
         require_once __DIR__ . '/components/footer.php';
         ?>

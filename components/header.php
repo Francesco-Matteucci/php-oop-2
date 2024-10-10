@@ -8,7 +8,7 @@ $isLoggedIn = isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn'];
         <div class="d-flex justify-content-between align-items-center">
 
             <a href="index.php" class="navbar-brand">
-                <img src="img/logo.png" alt="Logo" style="max-height: 50px;">
+                <img src="img/logo.png" alt="Logo">
             </a>
 
             <nav class="navbar navbar-expand-lg navbar-light">
