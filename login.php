@@ -20,7 +20,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $_SESSION['isLoggedIn'] = true;
         $_SESSION['email'] = $email;
         header('Location: index.php');
-        exit;
     } else {
         $error = "Email o password non validi";
     }
