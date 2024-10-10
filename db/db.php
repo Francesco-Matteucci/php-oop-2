@@ -12,12 +12,12 @@ $catCategory = new Category("Gatti", "fa fa-cat");
 $products = [
     
  // Prodotti per Cani
- new Food("Cibo per Cani", '29.99', $dogCategory, "img/dog_food.jpg", 2, "2025-01-01"),
- new Toy("Gioco per Cani", '19.99', $dogCategory, "img/dog_toy.jpg", "Gomma", "Medio"),
- new Bed("Cuccia per Cani", '49.99', $dogCategory, "img/dog_bed.jpg", "Grande", "Cotone"),
+ new Food("Cibo per Cani", 29.99, $dogCategory, "img/dog_food.jpg", 2, "2025-01-01"),
+ new Toy("Gioco per Cani", 19.99, $dogCategory, "img/dog_toy.jpg", "Gomma", "Medio"),
+ new Bed("Cuccia per Cani", 49.99, $dogCategory, "img/dog_bed.jpg", "Grande", "Cotone"),
  
  // Prodotti per Gatti
- new Food("Cibo per Gatti", '25.99', $catCategory, "img/cat_food.jpg", 1.5, "2024-12-31"),
- new Toy("Gioco per Gatti", '15.99', $catCategory, "img/cat_toy.jpg", "Plastica", "Piccolo"),
- new Bed("Cuccia per Gatti", '45.99', $catCategory, "img/cat_bed.jpg", "Piccola", "Peluche")
+ new Food("Cibo per Gatti", 25.99, $catCategory, "img/cat_food.jpg", 1.5, "2024-12-31"),
+ new Toy("Gioco per Gatti", 15.99, $catCategory, "img/cat_toy.jpg", "Plastica", "Piccolo"),
+ new Bed("Cuccia per Gatti", 45.99, $catCategory, "img/cat_bed.jpg", "Piccola", "Peluche")
 ];
