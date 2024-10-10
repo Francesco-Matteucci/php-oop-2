@@ -1,3 +1,8 @@
+<?php
+session_start();
+$isLoggedIn = isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn'];
+?>
+
 <header class="bg-light p-3">
     <div class="container">
         <div class="d-flex justify-content-between align-items-center">
