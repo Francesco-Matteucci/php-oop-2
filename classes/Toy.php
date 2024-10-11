@@ -1,6 +1,9 @@
 <?php
+require_once __DIR__ . '/traits/Discountable.php';
 
 class Toy extends Product {
+    use Discountable;
+
     public string $material;
     public string $size;
 

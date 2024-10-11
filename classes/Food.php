@@ -1,6 +1,9 @@
 <?php
+require_once __DIR__ . '/traits/Discountable.php';
 
 class Food extends Product {
+    use Discountable;
+
     public float $weight;
     public string $expiryDate;
 

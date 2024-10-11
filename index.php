@@ -34,7 +34,7 @@ $discount = 0.20;
             <div class="row">
                 <?php
                 require_once __DIR__ . '/db/db.php';
-
+                
                 foreach ($products as $product) { ?>
                 <div class="col-md-4 mb-4">
                     <div class="card h-100 mb-4 p-4">
@@ -45,10 +45,10 @@ $discount = 0.20;
                             <p class="card-text"><?= $product->getDetails(); ?></p>
                             <p class="card-text">
                                 <strong>Prezzo: €<?= number_format($product->price, 2); ?></strong>
-                                <?php if ($isLoggedIn) { ?>
+                                <?php if ($isLoggedIn && method_exists($product, 'applyDiscount')) { ?>
                                 <br>
                                 <strong>Prezzo scontato:
-                                    €<?= number_format($product->price * (1 - $discount), 2); ?></strong>
+                                    €<?= number_format($product->applyDiscount($product->price, $discount), 2); ?></strong>
                                 <?php } ?>
                             </p>
                         </div>
