@@ -4,6 +4,15 @@ session_start();
 $isLoggedIn = isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn'];
 
 $discount = 0.20;
+
+// Verifico se è stata inviata una votazione,  e mostro il messaggio
+$ratingMessage = null;
+if (isset($_SESSION['ratingMessage'])) {
+    $ratingMessage = $_SESSION['ratingMessage'];
+
+     // Rimuovo il messaggio dopo averlo mostrato
+    unset($_SESSION['ratingMessage']);
+}
 ?>
 
 <!DOCTYPE html>
@@ -51,13 +60,26 @@ $discount = 0.20;
                                     €<?= number_format($product->applyDiscount($product->price, $discount), 2); ?></strong>
                                 <?php } ?>
                             </p>
+
+                            <?php if ($ratingMessage && $ratingMessage['product_id'] == $product->id) { ?>
+                            <div class="alert <?= $ratingMessage['success'] ? 'alert-success' : 'alert-danger'; ?>">
+                                <?= $ratingMessage['message']; ?>
+                            </div>
+                            <?php } ?>
+
+                            <form method="POST" action="rate_product.php">
+                                <input type="hidden" name="product_id" value="<?= $product->id; ?>">
+                                <label for="rating">Dai un voto (1-5):</label>
+                                <input type="number" name="rating">
+                                <button type="submit" class="btn btn-primary mt-2">Valuta</button>
+                            </form>
+
                         </div>
                     </div>
                 </div>
                 <?php } ?>
             </div>
         </div>
-
         <?php
         require_once __DIR__ . '/components/footer.php';
         ?>
